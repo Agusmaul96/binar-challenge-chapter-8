@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
@@ -19,7 +19,12 @@ db.client.sync();
 
 require("./app/routes/player.routes")(app);
 
-const PORT = process.env.PORT || 5000;
+const swaggerJson = require("./player-api-documentation.json");
+const swaggerUI = require("swagger-ui-express");
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJson));
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port http://localhost:${PORT}.`);
 });
