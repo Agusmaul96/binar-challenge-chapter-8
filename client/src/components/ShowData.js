@@ -1,7 +1,7 @@
 import React from "react";
 import "./style/Search.css";
 
-function Card({ person }) {
+function ShowData({ person }) {
   return (
     <div className="data">
       <div>
@@ -14,4 +14,4 @@ function Card({ person }) {
   );
 }
 
-export default Card;
+export default ShowData;
