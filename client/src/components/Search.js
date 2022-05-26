@@ -7,10 +7,12 @@ function Search({ details }) {
   const [searchShow, setSearchShow] = useState(false);
 
   const filteredPersons = details.filter((person) => {
-    person.username.toLowerCase().includes(searchField.toLowerCase()) ||
+    return (
+      person.username.toLowerCase().includes(searchField.toLowerCase()) ||
       person.email.toLowerCase().includes(searchField.toLowerCase()) ||
       person.experience.toLowerCase().includes(searchField.toLowerCase()) ||
-      person.lvl.toLowerCase().includes(searchField.toLowerCase());
+      person.lvl.toLowerCase().includes(searchField.toLowerCase())
+    );
   });
 
   const handleChange = (e) => {
