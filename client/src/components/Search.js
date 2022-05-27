@@ -15,14 +15,20 @@ function Search({ details }) {
     );
   });
 
-  const handleChange = (e) => {
-    setSearchField(e.target.value);
-    if (e.target.value === "") {
-      setSearchShow(false);
-    } else {
+  const handleChange = (event) => {
+    setSearchField(event.target.value);
+  };
+  const onClick = (event) => {
+    event.preventDefault();
+    if (searchField) {
       setSearchShow(true);
     }
   };
+  function searchList() {
+    if (searchShow) {
+      return <SearchList filteredPersons={filteredPersons} />;
+    }
+  }
 
   function searchList() {
     if (searchShow) {
@@ -34,7 +40,7 @@ function Search({ details }) {
     <section className="topnav">
       <div className="search-container">
         <input className="input" type="search" placeholder="Search player ...." onChange={handleChange} />
-        <button type="submit">
+        <button type="submit" onClick={onClick}>
           <i class="">Search Player</i>
         </button>
       </div>
